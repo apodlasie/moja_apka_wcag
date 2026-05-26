@@ -5,9 +5,9 @@
 /* PALETA KOLORÓW */
 
 :root {
-  --page-bg: #ece1c1; 
-  --surface-bg: #ece1c1;
-  --surface-muted-bg: #f8f8f8;
+  --page-bg: #fffcf3; 
+  --surface-bg: #fffcf3;
+  --surface-muted-bg: #fffcf3;
   --text-main: #5f0000;
   --text-muted: #5f0000;
   --border-light: #5f0000;
