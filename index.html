@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Planer dnia zgodny z WCAG</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <a href="#main-content" class="skip-link">Przejdź do głównej treści</a>
+  <header class="page-header">
+    <div class="header-content">
+      <h1>Planer dnia zgodny z zasadami dostępności cyfrowej</h1>
+      <p>
+        To będzie aplikacja webowa wspomagająca organizację codziennych zadań,
+        zaprojektowana z myślą o osobach słabowidzących (realizująca wybrane wytyczne WCAG)
+      </p>
+    </div>
+
+    <section class="accessibility-panel" aria-labelledby="accessibility-title">
+      <h2 id="accessibility-title">Ustawienia dostępności</h2>
+
+      <button type="button" id="contrastToggle" aria-pressed="false">
+        Włącz wysoki kontrast
+      </button>
+
+      <button type="button" id="fontToggle" aria-pressed="false">
+        Włącz dużą czcionkę
+      </button>
+
+      <button type="button" id="spacingToggle" aria-pressed="false">
+        Włącz większe odstępy
+      </button>
+
+      <button type="button" id="simpleToggle" aria-pressed="false">
+        Włącz tryb uproszczony
+      </button>
+    </section>
+  </header>
+
+  <main id="main-content">
+
+    <nav class="tabs" aria-label="Główne widoki aplikacji">
+      <button
+        type="button"
+        class="tab-button active-tab"
+        data-tab="add-task-view"
+        aria-controls="add-task-view"
+        aria-selected="true"
+      >
+        Dodaj zadanie
+      </button>
+
+      <button
+        type="button"
+        class="tab-button"
+        data-tab="day-plan-view"
+        aria-controls="day-plan-view"
+        aria-selected="false"
+      >
+        Plan dnia
+      </button>
+    </nav>
+
+    <section
+      id="add-task-view"
+      class="tab-panel active-panel"
+      aria-labelledby="form-title"
+    >
+<h2 id="form-title">Dodaj zadanie</h2>
+
+      <p class="form-hint">
+        Pola oznaczone gwiazdką (*) są wymagane.
+      </p>
+
+      <form id="taskForm">
+        <input type="hidden" id="taskId">
+
+        <div class="form-group">
+          <label for="taskTitle">
+            Nazwa zadania <span class="required">*</span>  <!--uzywam span zeby oznaczyc tylko gwiazdke do stylowania -->
+          </label>
+
+          <input
+            type="text"
+            id="taskTitle"
+            required
+            aria-describedby="taskTitleHint"
+          >
+
+          <p id="taskTitleHint" class="field-hint">
+            Wpisz krótką nazwę zadania, np. „Wizyta u lekarza”.
+          </p>
+        </div>
+
+        <div class="form-group">
+          <label for="taskDate">
+            Data <span class="required">*</span>
+          </label>
+
+          <input type="date" id="taskDate" required>
+        </div>
+
+        <div class="form-group">
+          <label for="taskTime">
+            Godzina <span class="required">*</span>
+          </label>
+
+          <input type="time" id="taskTime" required>
+        </div>
+
+
+
+
+        <div class="form-group">
+          <label for="taskCategory">Kategoria</label>
+          <select id="taskCategory">
+            <option value="dom">Dom</option>
+            <option value="zdrowie">Zdrowie</option>
+            <option value="praca">Praca</option>
+            <option value="nauka">Nauka</option>
+            <option value="inne">Inne</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="taskPriority">Priorytet</label>
+          <select id="taskPriority">
+            <option value="niski">Niski</option>
+            <option value="sredni">Średni</option>
+            <option value="wysoki">Wysoki</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="taskNote">Notatka</label>
+          <textarea id="taskNote" rows="4"></textarea>
+        </div>
+
+        <button type="submit" id="saveTaskButton">
+          Dodaj zadanie
+        </button>
+      </form>
+
+      <p id="formMessage" role="status" aria-live="polite"></p>
+    </section>
+
+    <section
+      id="day-plan-view"
+      class="tab-panel"
+      aria-labelledby="tasks-title"
+      hidden
+    >
+      <h2 id="tasks-title">Plan dnia</h2>
+
+      <section class="plan-date-section" aria-labelledby="plan-date-title">
+        <h3 id="plan-date-title">Wybierz dzień</h3>
+
+        <div class="form-group">
+          <label for="planDate">Data planu</label>
+          <input type="date" id="planDate">
+        </div>
+
+        <button type="button" id="todayPlanButton">
+          Pokaż dzisiejszy dzień
+        </button>
+      </section>
+
+      <section class="filters-section" aria-labelledby="filters-title">
+        <h3 id="filters-title">Filtruj zadania</h3>
+
+        <button type="button" data-filter="all">Wszystkie</button>
+        <button type="button" data-filter="active">Niewykonane</button>
+        <button type="button" data-filter="completed">Wykonane</button>
+      </section>
+
+      <section class="tasks-section" aria-label="Lista zadań w planie dnia">
+        <div id="tasksList" class="tasks-list">
+          <!-- Zadania będą generowane przez JavaScript -->
+        </div>
+      </section>
+    </section>
+
+  </main>
+
+  <footer class="page-footer">
+    <p>2026</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,582 @@
+* {
+  box-sizing: border-box;
+}
+
+/* PALETA KOLORÓW */
+
+:root {
+  --page-bg: #ece1c1; 
+  --surface-bg: #ece1c1;
+  --surface-muted-bg: #f8f8f8;
+  --text-main: #5f0000;
+  --text-muted: #5f0000;
+  --border-light: #5f0000;
+  --border-medium: #5f0000;
+  --border-dark: #5f0000;
+
+  --hc-background: #000000;
+  --hc-surface: #000000;
+  --hc-text: #ffffff;
+  --hc-muted-text: #e6e6e6;
+  --hc-border: #ffffff;
+  --hc-focus: #ffff00;
+  --hc-info: #00ffff;
+  --hc-success: #00ff00;
+  --hc-warning: #ffd700;
+  --hc-error: #ff6b6b;
+}
+
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 16px;
+  z-index: 2000;
+  padding: 12px 18px;
+  background-color: #000000;
+  color: #ffffff;
+  border: 3px solid #ffff00;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.skip-link:focus {
+  top: 16px;
+}
+/* PODSTAWOWY WYGLĄD STRONY */
+
+body {
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+  line-height: 1.6;
+  margin: 0;
+  background-color: var(--page-bg);
+  color: var(--text-main);
+}
+
+main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 32px;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  line-height: 1.3;
+  color: var(--text-main);
+}
+
+h2 {
+  margin-top: 0;
+}
+
+p {
+  color: var(--text-main);
+}
+
+/* HEADER I FOOTER */
+
+.page-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  display: flex;
+  gap: 24px;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  background-color: var(--surface-bg);
+  padding: 24px 32px;
+  border-bottom: 3px solid var(--border-dark);
+}
+
+.header-content {
+  max-width: 520px;
+}
+
+.header-content h1 {
+  margin-top: 0;
+  margin-bottom: 8px;
+  font-size: 40px;
+}
+
+.header-content p {
+  margin-bottom: 0;
+}
+
+.page-footer {
+  background-color: var(--surface-bg);
+  padding: 32px;
+  border-top: 2px solid var(--border-medium);
+  margin-top: 32px;
+}
+
+/* SEKCJE */
+
+section {
+  background-color: var(--surface-bg);
+  padding: 24px;
+  margin-bottom: 24px;
+  border: 2px solid var(--border-light);
+  border-radius: 8px;
+}
+
+.tab-panel {
+  background-color: var(--surface-bg);
+  padding: 24px;
+  border: 2px solid var(--border-light);
+  border-radius: 8px;
+}
+
+.tab-panel[hidden] {
+  display: none;
+}
+
+/* PANEL USTAWIEŃ DOSTĘPNOŚCI */
+
+.page-header .accessibility-panel {
+  max-width: 420px;
+  margin-bottom: 0;
+  padding: 16px;
+  border: 2px solid var(--border-dark);
+  border-radius: 8px;
+  background-color: var(--surface-muted-bg);
+}
+
+.page-header .accessibility-panel h2 {
+  font-size: 22px;
+  margin-bottom: 12px;
+}
+
+.page-header .accessibility-panel button {
+  font-size: 16px;
+  padding: 8px 12px;
+}
+
+/* ZAKŁADKI */
+
+.tabs {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
+.tab-button {
+  font-size: 20px;
+  font-weight: bold;
+  padding: 14px 24px;
+  border: 3px solid var(--border-dark);
+  border-radius: 6px;
+  background-color: var(--surface-bg);
+  color: var(--text-main);
+}
+
+.tab-button.active-tab {
+  background-color: var(--border-dark);
+  color: #ffffff;
+}
+
+/* FORMULARZE */
+
+.form-group {
+  margin-bottom: 18px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 6px;
+  color: var(--text-main);
+}
+
+input,
+select,
+textarea,
+button {
+  font: inherit;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #5f0000;
+  border-radius: 6px;
+  background-color: #ffffff;
+  color: var(--text-main);
+}
+
+textarea {
+  resize: vertical;
+}
+
+button {
+  padding: 12px 18px;
+  margin: 6px 6px 6px 0;
+  border: 2px solid var(--border-dark);
+  border-radius: 6px;
+  background-color: #ffffff;
+  color: var(--text-main);
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #eeeeee;
+}
+
+button:focus,
+input:focus,
+select:focus,
+textarea:focus,
+.tab-button:focus {
+  outline: 4px solid #000000;
+  outline-offset: 3px;
+}
+
+/* KOMUNIKATY */
+
+#formMessage {
+  font-weight: bold;
+  margin-top: 16px;
+  color: var(--text-main);
+}
+
+/* WYBÓR DATY PLANU */
+
+.plan-date-section {
+  background-color: var(--surface-muted-bg);
+  border: 2px solid var(--border-medium);
+}
+
+/* FILTRY */
+
+.active-filter {
+  background-color: var(--border-dark);
+  color: #ffffff;
+}
+
+/* LISTA ZADAŃ */
+
+.tasks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.task-card {
+  padding: 20px;
+  border: 2px solid #000000;
+  border-radius: 8px;
+  background-color: var(--surface-bg);
+}
+
+.task-card h3,
+.task-card h4 {
+  margin-top: 0;
+  font-size: 24px;
+}
+
+.task-card.completed {
+  opacity: 0.75;
+  background-color: #eeeeee;
+}
+
+.task-card.completed h3,
+.task-card.completed h4 {
+  text-decoration: line-through;
+}
+
+.task-actions {
+  margin-top: 16px;
+}
+
+/* PODZIAŁ PLANU NA CZĘŚCI DNIA */
+
+.day-part {
+  margin-bottom: 28px;
+  padding: 20px;
+  border: 3px solid var(--border-dark);
+  border-radius: 10px;
+  background-color: #fafafa;
+}
+
+.day-part-title {
+  margin-top: 0;
+  font-size: 28px;
+}
+
+.day-part-description {
+  font-weight: bold;
+  margin-bottom: 18px;
+  color: var(--text-muted);
+}
+
+/* TRYB UPROSZCZONY */
+
+body.simple-view .optional-detail {
+  display: none;
+}
+
+body.simple-view .task-card {
+  border-width: 3px;
+}
+
+body.simple-view .task-card h3,
+body.simple-view .task-card h4 {
+  font-size: 28px;
+}
+
+body.simple-view .task-actions button {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+/* TRYB DUŻEJ CZCIONKI */
+
+body.large-text {
+  font-size: 22px;
+}
+
+body.large-text h1 {
+  font-size: 48px;
+}
+
+body.large-text h2 {
+  font-size: 34px;
+}
+
+body.large-text .task-card h3,
+body.large-text .task-card h4 {
+  font-size: 30px;
+}
+
+/* TRYB WIĘKSZYCH ODSTĘPÓW */
+
+body.increased-spacing {
+  line-height: 1.9;
+}
+
+body.increased-spacing section {
+  padding: 36px;
+  margin-bottom: 36px;
+}
+
+body.increased-spacing .form-group {
+  margin-bottom: 28px;
+}
+
+body.increased-spacing button {
+  margin: 10px 10px 10px 0;
+}
+
+body.increased-spacing .tasks-list {
+  gap: 28px;
+}
+
+/* TRYB WYSOKIEGO KONTRASTU */
+
+body.high-contrast {
+  background-color: var(--hc-background);
+  color: var(--hc-text);
+}
+
+/* Główne kontenery */
+
+body.high-contrast .page-header,
+body.high-contrast .page-footer,
+body.high-contrast main,
+body.high-contrast section,
+body.high-contrast .tab-panel,
+body.high-contrast .accessibility-panel,
+body.high-contrast .plan-date-section,
+body.high-contrast .filters-section,
+body.high-contrast .tasks-section,
+body.high-contrast .day-part,
+body.high-contrast .task-card {
+  background-color: var(--hc-surface);
+  color: var(--hc-text);
+  border-color: var(--hc-border);
+}
+
+/* Nagłówki i teksty */
+
+body.high-contrast h1,
+body.high-contrast h2,
+body.high-contrast h3,
+body.high-contrast h4 {
+  color: var(--hc-text);
+}
+
+body.high-contrast p,
+body.high-contrast label,
+body.high-contrast .day-part-description {
+  color: var(--hc-muted-text);
+}
+
+/* Pola formularzy */
+
+body.high-contrast input,
+body.high-contrast select,
+body.high-contrast textarea {
+  background-color: var(--hc-background);
+  color: var(--hc-text);
+  border-color: var(--hc-border);
+}
+
+/* Przyciski */
+
+body.high-contrast button,
+body.high-contrast .tab-button {
+  background-color: var(--hc-background);
+  color: var(--hc-text);
+  border-color: var(--hc-border);
+}
+
+body.high-contrast button:hover,
+body.high-contrast .tab-button:hover {
+  background-color: var(--hc-text);
+  color: var(--hc-background);
+}
+
+/* Aktywna zakładka i aktywny filtr */
+
+body.high-contrast .active-filter,
+body.high-contrast .tab-button.active-tab {
+  background-color: var(--hc-text);
+  color: var(--hc-background);
+  border-color: var(--hc-text);
+}
+
+/* Focus klawiatury */
+
+body.high-contrast button:focus,
+body.high-contrast input:focus,
+body.high-contrast select:focus,
+body.high-contrast textarea:focus,
+body.high-contrast .tab-button:focus {
+  outline: 4px solid var(--hc-focus);
+  outline-offset: 4px;
+}
+
+/* Linki, gdyby pojawiły się później */
+
+body.high-contrast a {
+  color: var(--hc-info);
+}
+
+/* Komunikaty */
+
+body.high-contrast #formMessage {
+  color: var(--hc-success);
+}
+
+/* Zadania wykonane w wysokim kontraście */
+
+body.high-contrast .task-card.completed {
+  background-color: var(--hc-background);
+  color: var(--hc-muted-text);
+  border-style: dashed;
+  opacity: 1;
+}
+
+body.high-contrast .task-card.completed h3,
+body.high-contrast .task-card.completed h4 {
+  color: var(--hc-muted-text);
+  text-decoration: line-through;
+}
+
+/* Tryb uproszczony razem z wysokim kontrastem */
+
+body.high-contrast.simple-view .task-card {
+  border-color: var(--hc-focus);
+}
+
+/* RESPONSYWNOŚĆ */
+
+@media (max-width: 900px) {
+  .page-header {
+    position: static;
+    flex-direction: column;
+  }
+
+  .page-header .accessibility-panel {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  main {
+    padding: 16px;
+  }
+
+  .page-header,
+  .page-footer {
+    padding: 20px;
+  }
+
+  section,
+  .tab-panel {
+    padding: 18px;
+  }
+
+  .header-content h1 {
+    font-size: 32px;
+  }
+
+  button,
+  .tab-button {
+    width: 100%;
+    margin-right: 0;
+  }
+}
+
+/* POLA DATY I GODZINY W TRYBIE WYSOKIEGO KONTRASTU */
+
+body.high-contrast input[type="date"],
+body.high-contrast input[type="time"] {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  border-color: #ffffff !important;
+  color-scheme: light;
+}
+
+body.high-contrast input[type="date"]::-webkit-calendar-picker-indicator,
+body.high-contrast input[type="time"]::-webkit-calendar-picker-indicator {
+  filter: none;
+  opacity: 1;
+  cursor: pointer;
+}
+
+
+
+
+.form-hint,
+.field-hint {
+  font-size: 0.95em;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+.form-hint {
+  color: #b00020;
+  font-weight: bold;
+}
+
+.required {
+  color: #b00020;
+  font-weight: bold;
+}
+
+body.high-contrast .form-hint,
+body.high-contrast .required {
+  color: var(--hc-warning);
+}
+
+body.high-contrast .field-hint {
+  color: var(--hc-muted-text);
+}
