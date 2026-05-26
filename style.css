@@ -78,18 +78,20 @@ p {
 /* HEADER I FOOTER */
 
 .page-header {
-  position: sticky;
+  position: fixed;
   top: 0;
   z-index: 1000;
 
-  display: flex;
-  gap: 24px;
-  justify-content: space-between;
-  align-items: flex-start;
+  display: inline-block;
+  width: auto;
+  height: auto;
+  min-height: 0;
 
+  background: transparent;
+  padding: 24px;
+  border-bottom: none;
   background-color: var(--surface-bg);
-  padding: 24px 32px;
-  border-bottom: 3px solid var(--border-dark);
+
 }
 
 .header-content {
